@@ -31,7 +31,7 @@ Kolo consists of a Python package and a VSCode extension:
 - The frame visualization now includes a :sparkles: beautiful :sparkles: flame graph that shows timing information for each function call ⏱️
 
   <img src="https://user-images.githubusercontent.com/7718702/145239425-ad942d9c-b0df-4fb5-b885-4004c80b5694.png" width=500px>
-- Show which line of your code caused Django execute a SQL query
+- Show which line of your code caused Django to execute a SQL query
 
   <img width="300px" src="https://user-images.githubusercontent.com/7718702/144677065-8ffa6d46-1130-4a47-b48e-8210e61a0a88.png">
 
@@ -39,7 +39,7 @@ Kolo consists of a Python package and a VSCode extension:
 - Support for custom request descriptions so that you can easily distinguish different requests even if they arrive at the same path
 
   <img width="300px" src="https://user-images.githubusercontent.com/7718702/140084399-27e2d472-2b8d-4ff2-80a7-3154730a13c9.png">
-- Much improved support for :sparkles: **exceptions** :sparkles: Jump straight to where the problem occurred and see the all the contextual information to understand _why_ it happened
+- Much improved support for :sparkles: **exceptions** :sparkles: Jump straight to where the problem occurred and see all the contextual information to understand _why_ it happened
 
     <img  width="300px" src="https://user-images.githubusercontent.com/7718702/133599943-13502c16-62ef-4e2e-8ac9-5916ff355904.png">
     <br />
@@ -53,13 +53,13 @@ Kolo consists of a Python package and a VSCode extension:
 ```
 pip install kolo
 ```
-2. Add Kolo to the top of your `MIDDLEWARE` in settings.py :
+2. Add Kolo to the top of your `MIDDLEWARE` in `settings.py`:
 ```
 "kolo.middleware.KoloMiddleware",
 ```
-3. Make sure DEBUG is True in your settings.py file, then start your local Django server the way you normally would (for example: `python manage.py runserver`)
+3. Make sure `DEBUG` is `True` in your `settings.py` file, then start your local Django server the way you normally would (for example: `python manage.py runserver`).
 4. Install the VSCode extension: https://marketplace.visualstudio.com/items?itemName=kolo.kolo
-   - Kolo will show up with an icon in the left sidebar in VSCode <img width="40px" src="https://user-images.githubusercontent.com/7718702/120314341-0c965980-c2d3-11eb-9f1d-c3d9bcccd1c9.png">
+   - Kolo will show up with an icon in the left sidebar in VSCode. <img width="40px" src="https://user-images.githubusercontent.com/7718702/120314341-0c965980-c2d3-11eb-9f1d-c3d9bcccd1c9.png">
    - After clicking on the Kolo icon and opening Kolo within VSCode, follow the instructions to login and confirm your email
 5. Any new requests that get served by your local, running Django app will now show up in VSCode 🎉
    - Make your Django app serve an HTTP request (for example by going to `localhost:8000`), then return to Kolo in VSCode to inspect it 🔎 🙌
@@ -96,7 +96,7 @@ Kolo works by writing data to a sqlite database from within your running Django 
 
 
 ### Configuration
-Kolo only runs when `DEBUG` is set to `True` in your settings.py file. If you would like to disable Kolo when DEBUG is True, you can set the KOLO_DISABLE environment variable: `KOLO_DISABLE=true`
+Kolo only runs when `DEBUG` is set to `True` in your `settings.py` file. If you would like to disable Kolo when `DEBUG` is `True`, you can set the `KOLO_DISABLE` environment variable: `KOLO_DISABLE=true`
 
 #### Path To Kolo Directory
 
@@ -200,7 +200,7 @@ If you would like to explicitly not have a description for a request, you can `r
 
 `request-body.js` is a useful tool when you'd like to reshape the arriving request body purely for display purposes within Kolo. The code in `.kolo/request-body.js` executes before `request-description.js` meaning that your custom request description code can take adavantage of the reshaped body.
 
-For example, some of the requests a Slack app might receive from Slack have a somewhat unusual format: Slack sends the request with the `x-www-form-urlencoded` content type containing only a single key called "payload" which then contains a JSON string of the actual payload. This request body can be a bit unwieldy, it would be more convenient to directly interact with the JSON payload. This is exactly what `request-body.js` can help us achieve.
+For example, some of the requests a Slack app might receive from Slack have a somewhat unusual format: Slack sends the request with the `x-www-form-urlencoded` content type containing only a single parameter with `payload` as its key and a JSON string of the actual payload as its value. This request body can be a bit unwieldy, it would be more convenient to directly interact with the JSON payload. This is exactly what `request-body.js` can help us achieve.
 
 The following `.kolo/request-body.js` code converts the payload to just regular JSON for display within Kolo:
 ```js
@@ -241,7 +241,7 @@ return {
 }
 ```
 
-You may also optionally pass a `language` key alongside `body`, which Kolo will pass along to VSCode when viewind the body.
+You may also optionally pass a `language` key alongside `body`, which Kolo will pass along to VSCode when viewing the body.
 
 If you would like to explicitly not have a custom request body for a request, you can `return undefined`
 
@@ -270,7 +270,7 @@ To enable the inline code annotations for a specific request, click on the top l
 <img width="600px" src="https://user-images.githubusercontent.com/7718702/120466598-28fbca00-c397-11eb-9656-062e99a62736.png">
 
 
-Click on "Frames" for a specific request, and the frame visualization will open up
+Click on "Frames" for a specific request, and the frame visualization will open up.
 
 
 Check out https://kolo.app for more feature screenshots ✨
